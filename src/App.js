@@ -1,12 +1,16 @@
 import "./App.css";
 import Games from "./component/Games";
+import Title from "./component/Title"
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Games />
+        <Title />
       </header>
+      <div className="App-body">
+        <Games />
+      </div>
     </div>
   );
 }

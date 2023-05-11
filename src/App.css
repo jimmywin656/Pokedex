@@ -1,10 +1,15 @@
 @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+@import url('https://db.onlinewebfonts.com/c/073a3b73a63a87e100f6bb8f003fc0d3?family=Flexo+Light');
 
 .App {
   text-align: center;
 }
 
 .App-header {
+  background-color: #282c34;
+}
+
+.App-body {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -35,10 +40,19 @@
 }
 
 .title {
+  margin: 0;
   font-family: 'Pokemon Solid', sans-serif;
   font-size: 80px;
   color: #FDB813;
   letter-spacing: 10px;
   text-shadow: 8px 8px #3F51B5;
   -webkit-text-stroke: 2px #2196F3;
+}
+
+.pokeblock {
+  padding: 0;
+  width: 20%;
+}
+.pokeName {
+  font-family: "Flexo-Demi", Arial, Helvetica, sans-serif;
 }

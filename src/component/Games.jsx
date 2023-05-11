@@ -6,6 +6,11 @@ const Games = () => {
     const [isDataLoaded, setIsDataLoaded] = React.useState(false);
 
     let api_url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`;
+    
+    const image_url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+    const png = ".png";
+
+    const pokemon_url = 'https://pokeapi.co/api/v2/pokemon/';
 
     React.useEffect(() => {
         fetchData();
@@ -28,33 +33,25 @@ const Games = () => {
         })
     }
 
-    function nextPage() {
-        setOffset(offset + 20);
-    }
-
-    function prevPage() {
-        if(offset > 0) {
-            setOffset(offset - 20);
-        }
-    }
-
-    const image_url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
-    const png = ".png";
-
     return (
         <div className="App">
-            <h1 className="title"> Pokémon </h1>
             {items.results.map((item) => (
-                <ul style={{"listStyleType": "none", "display": "inline-block",}} key={item.url.slice(34).slice(0,-1)}>
+                <ul style={{"listStyleType": "none", "display": "inline-block",}} key={item.url.slice(34).slice(0,-1)} className="pokeblock">
                     <li>
-                        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                         <img width='250' src={image_url + item.url.slice(34).slice(0,-1) + png} alt={"picture of" + item.name}></img>
                     </li>
+                    <span className="pokeName">{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</span>
                 </ul>
             ))}
             <div className="buttonContainer">
-                <button className="button next" onClick={prevPage}>&#8592;</button>
-                <button className="button prev" onClick={nextPage}>&#8594;</button>
+                <button className="button prev" onClick={() => {
+                    if(offset > 0) {
+                        setOffset(offset - 20);
+                    }
+                }}>&#8592;</button>
+                <button className="button next" onClick={() => {
+                    setOffset(offset + 20);
+                }}>&#8594;</button>
             </div>
         </div>
     );
